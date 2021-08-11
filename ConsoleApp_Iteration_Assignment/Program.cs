@@ -27,10 +27,11 @@ namespace ConsoleApp_Iteration_Assignment
             }
 
             Console.WriteLine("\n\n\n\n");
-            
+
             //Part 1 adding a string to each item in the array End
 
-
+            Console.WriteLine("Press ENTER to continue");
+            Console.ReadLine();
 
 
 
@@ -53,6 +54,8 @@ namespace ConsoleApp_Iteration_Assignment
                 number++; // By having number increase by one each loop the while loop can end once number reaches 10
             }
 
+            Console.WriteLine("Press ENTER to continue");
+            Console.ReadLine();
             Console.WriteLine("\n\n\n\n");
 
             //Part 2 stuck in an infinate loop End
@@ -95,7 +98,7 @@ namespace ConsoleApp_Iteration_Assignment
 
             int stop = driverNames.Count - 1;
             
-            Console.WriteLine("Search for a driver here:\n");
+            Console.WriteLine("Search for a F1 driver here:\n");
             string userSearch = Console.ReadLine();
             
             for (int i = 0; i < driverNames.Count; i++)
@@ -152,16 +155,24 @@ namespace ConsoleApp_Iteration_Assignment
 
             //Part 6 Number of Duplicates Start
 
-            List<string> shoppingList = new List<string>() { "Milk", "Eggs", "Carrots", "Milk", "Bread", "Eggs", };
+            List<string> shoppingList = new List<string>() { "Milk", "Carrots", "Eggs", "Milk", "Bread", "Eggs", };
 
-            IEnumerable<string> duplicates = shoppingList.GroupBy(x => x)
-                                            .Where(g => g.Count() > 1)
-                                            .Select(x => x.Key);
-            foreach (string item in shoppingList)
+            bool isCopy = false;
+
+            foreach (string items in shoppingList)
             {
-                Console.WriteLine("Duplicate elements are: " + String.Join(",", duplicates));
+                if (shoppingList.Contains(items) && shoppingList.Count(n => n == items) == 1) 
+                {
+                    Console.WriteLine($"{items} is added to the list");
+                }
+
+                else if (shoppingList.Contains(items) && shoppingList.Count(n => n == items) >= 1)
+                {
+                    Console.WriteLine($"{items} is already on the list");
+                }
             }
             //Part 6 Number of Duplicates End
         }
     }
 }
+
