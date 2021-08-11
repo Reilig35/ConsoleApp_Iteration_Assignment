@@ -130,18 +130,11 @@ namespace ConsoleApp_Iteration_Assignment
 
             //Part 5 Same result Start
 
-            List<string> names = new List<string>();
-
-            names.Add("William");
-            names.Add("John");
-            names.Add("Tony");
-            names.Add("John");
-            names.Add("Patrick");
-            names.Add("Luckaz");
-            names.Add("Steven");
-            names.Add("Luckaz");
+            List<string> names = new List<string>() { "William", "John", "Tony", "John", "Patrick", "Luckaz","Joan", "Nicole"};
 
             int stop2 = names.Count - 1;
+
+            bool isFound = false;
 
             Console.WriteLine("Search for a worker here:\n");
             string userSearch2 = Console.ReadLine();
@@ -150,9 +143,10 @@ namespace ConsoleApp_Iteration_Assignment
                 if (names[i] == userSearch2)
                 {
                     Console.WriteLine($"We found a {names[i]} at index {i}");
+                    isFound = true;
                 }
 
-                else if (i == stop2 && userSearch2 != names[i])
+                else if (i == stop2 && userSearch2 != names[i] && isFound == false)
                 {
                     Console.WriteLine("No Results found");
                 }
