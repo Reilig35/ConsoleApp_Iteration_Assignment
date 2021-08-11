@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ConsoleApp_Iteration_Assignment
 {
@@ -90,16 +91,7 @@ namespace ConsoleApp_Iteration_Assignment
             
             //Part 4 Search List of strings Start
 
-            List<string> driverNames = new List<string>();
-
-            driverNames.Add("Hamilton");
-            driverNames.Add("Verstappen");
-            driverNames.Add("Perez");
-            driverNames.Add("Bottas");
-            driverNames.Add("Sainz");
-            driverNames.Add("Leclerc");
-            driverNames.Add("Alonso");
-
+            List<string> driverNames = new List<string>() { "Hamilton", "Verstappen", "Norris", "Bottas", "Perez", "Sainz", "Leclerc", "Alonso"};
 
             int stop = driverNames.Count - 1;
             
@@ -152,7 +144,24 @@ namespace ConsoleApp_Iteration_Assignment
                 }
             }
 
+            Console.WriteLine("Press ENTER to Continue");
+            Console.ReadLine();
+
             //Part 5 Same result End
+
+
+            //Part 6 Number of Duplicates Start
+
+            List<string> shoppingList = new List<string>() { "Milk", "Eggs", "Carrots", "Milk", "Bread", "Eggs", };
+
+            IEnumerable<string> duplicates = shoppingList.GroupBy(x => x)
+                                            .Where(g => g.Count() > 1)
+                                            .Select(x => x.Key);
+            foreach (string item in shoppingList)
+            {
+                Console.WriteLine("Duplicate elements are: " + String.Join(",", duplicates));
+            }
+            //Part 6 Number of Duplicates End
         }
     }
 }
